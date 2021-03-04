@@ -1,0 +1,45 @@
+{
+  "name": "family-quiz-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "jest": {
+    "verbose": true,
+    "testSequencer": "C:\\Projects\\FamilyQuiz\\serverless\\family-quiz-backend\\test\\conf\\CustomSequencer.js",
+    "reporters": [
+      "default",
+      [
+        "jest-stare",
+        {
+          "resultDir": "C:\\Projects\\FamilyQuiz\\serverless\\family-quiz-backend\\test\\reports"
+        }
+      ]
+    ]
+  },
+  "scripts": {
+    "test": "jest --detectOpenHandles --runInBand ",
+    "start": "node server.js"
+  },
+  "author": "garyc",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "express-jwt": "^6.0.0",
+    "jsonwebtoken": "^8.5.1",
+    "node-fetch": "^2.6.1",
+    "serverless-dynamodb-client": "0.0.2",
+    "serverless-dynamodb-local": "^0.2.35",
+    "serverless-http": "^2.6.1",
+    "unique-names-generator": "^4.3.1",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "jest": "^26.6.3",
+    "jest-serial-runner": "^1.1.0",
+    "jest-stare": "^2.2.1",
+    "serverless-offline": "^6.7.0",
+    "supertest": "^6.1.3"
+  }
+}

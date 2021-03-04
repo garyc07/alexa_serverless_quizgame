@@ -1,0 +1,48 @@
+
+/game
+-- GET /grouped?groupId=
+
+-- GET /types
+
+-- GET /difficulties
+
+-- POST /setup
+body = {
+   groupId: "",
+   difficulty: "",
+   players: [],
+   gameType: ""
+}
+
+-- 422 + msg on invalid params
+
+
+
+/item
+-- GET /next?lastItemId=   AUTH_TOKEN
+
+
+
+
+/player
+-- GET /list?gameId=
+
+-- POST /edit
+body = {
+   gameId: "",
+   playerId: "",
+   newName: ""
+}
+
+-- POST /select
+body = {
+   gameId: "",
+   playerId: ""
+}
+
+-- POST /submit  AUTH_TOKEN
+body = {
+   itemId: 1,
+   answer: ""
+}
+

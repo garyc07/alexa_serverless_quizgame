@@ -1,0 +1,45 @@
+DynamoDB table options
+
+-- https://aws.amazon.com/blogs/database/amazon-dynamodb-gaming-use-cases-and-design-patterns/
+
+
+GroupTable
+- groupId 
+- 
+
+
+
+GameTable
+- groupId:
+- gameId:
+- quizName:
+- difficulty:
+- players: 
+  - playerId
+
+
+PlayerTable
+- gameId 
+- playerId
+- playerName
+- readyStatus
+- totalScore 
+- questions: 
+  - itemId
+  -
+
+
+
+ItemTable
+- gameId
+- itemId 
+- message
+- timerSeconds 
+- questionType
+- question 
+- roundNumber
+- questionNumber // within round
+- correctAnswer 
+- IncorrectAnswers
+- scoreValue
+

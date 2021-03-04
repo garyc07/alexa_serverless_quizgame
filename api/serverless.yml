@@ -1,0 +1,133 @@
+
+service: family-quiz-backend
+app: family-quiz-backend-app
+org: mlggc
+
+# https://4bzi0faet9.execute-api.us-east-1.amazonaws.com/dev/{proxy+}
+
+frameworkVersion: '2'
+
+plugins:
+  - serverless-dynamodb-local
+  - serverless-offline
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  #lambdaHashingVersion: 20201221
+  stage: dev
+  region: eu-west-1
+  endpointType: regional
+  memorySize: 512
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:Query
+        - dynamodb:Scan
+        - dynamodb:GetItem
+        - dynamodb:PutItem
+        - dynamodb:UpdateItem
+        - dynamodb:DeleteItem
+      Resource:
+        - arn:aws:dynamodb:${self:provider.region}:*:table/${self:custom.itemTable}
+        - arn:aws:dynamodb:${self:provider.region}:*:table/${self:custom.itemTable}/index/*
+        - arn:aws:dynamodb:${self:provider.region}:*:table/${self:custom.gameTable}
+        - arn:aws:dynamodb:${self:provider.region}:*:table/${self:custom.gameTable}/index/*
+        - arn:aws:dynamodb:${self:provider.region}:*:table/${self:custom.playerTable}
+        - arn:aws:dynamodb:${self:provider.region}:*:table/${self:custom.playerTable}/index/*
+  environment:
+    ItemTable: ${self:custom.itemTable}
+    GameTable: ${self:custom.gameTable}
+    PlayerTable: ${self:custom.playerTable}
+    NODE_ENV: test
+
+
+functions:
+  app:
+    handler: server.handler
+    events:
+      - http: 
+          path: /{proxy+}
+          method: ANY
+          cors: any
+
+
+resources:
+  Resources:
+    ItemTable:
+      Type: 'AWS::DynamoDB::Table'
+      Properties:
+        TableName: ${self:custom.itemTable}
+        AttributeDefinitions:
+          - AttributeName: gameId
+            AttributeType: S
+          - AttributeName: itemId
+            AttributeType: N
+        KeySchema:
+          - AttributeName: gameId
+            KeyType: HASH
+          - AttributeName: itemId
+            KeyType: RANGE
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
+
+    GameTable:
+      Type: 'AWS::DynamoDB::Table'
+      Properties:
+        TableName: ${self:custom.gameTable}
+        AttributeDefinitions:
+          - AttributeName: groupId
+            AttributeType: S
+          - AttributeName: gameId
+            AttributeType: S
+        KeySchema:
+          - AttributeName: groupId
+            KeyType: HASH
+          - AttributeName: gameId
+            KeyType: RANGE
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
+
+    PlayerTable:
+      Type: 'AWS::DynamoDB::Table'
+      Properties:
+        TableName: ${self:custom.playerTable}
+        AttributeDefinitions:
+          - AttributeName: gameId
+            AttributeType: S
+          - AttributeName: playerId
+            AttributeType: S
+        KeySchema:
+          - AttributeName: gameId
+            KeyType: HASH
+          - AttributeName: playerId
+            KeyType: RANGE
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
+
+
+
+custom:
+  groupTable: 'familyquiz-group-table'
+  gameTable: 'familyquiz-game-table'
+  playerTable: 'familyquiz-player-table'
+  itemTable: 'familyquiz-item-table'
+  dynamodb: 
+    stages: 
+      - dev 
+      - test
+    start:
+      port: 8000
+      inMemory: true
+      migrate: true
+      seed: true
+
+
+package:
+  exclude:
+    - node_modules/dynamodb-localhost/**
+    - node_modules/serverless-dynamodb-local/**
+    - node_modules/serverless-offline/**

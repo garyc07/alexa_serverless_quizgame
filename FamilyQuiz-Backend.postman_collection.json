@@ -1,0 +1,281 @@
+{
+	"info": {
+		"_postman_id": "31af062d-aa42-4299-ab5a-2dfed483a2e7",
+		"name": "FamilyQuiz-Backend",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Game Setup",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"groupId\": \"2\",\r\n    \"difficulty\": \"easy\",\r\n    \"players\": [\"Gary\"],\r\n    \"gameType\": \"standard\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/game/setup",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"game",
+						"setup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Next Item",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJncm91cElkIjpudWxsLCJnYW1lSWQiOiIyZTAyOTBiMC02NjdjLTExZWItYTA4Zi1kNWE0NjcxODlmZjciLCJwbGF5ZXJJZCI6IjJlMDI5MGIxLTY2N2MtMTFlYi1hMDhmLWQ1YTQ2NzE4OWZmNyIsImV4cCI6MTAwMDAwMDAwMDAwMDAsImlhdCI6MTYxMjM5Njk3Mn0.QhLb1eYUhT9TMLYu4e1pOTymCIkIF4NXgDNOCzFFZx8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/item/next?lastItemId=4",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"item",
+						"next"
+					],
+					"query": [
+						{
+							"key": "lastItemId",
+							"value": "4"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Group Games",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/game/groupGames?groupId=1",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"game",
+						"groupGames"
+					],
+					"query": [
+						{
+							"key": "groupId",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Player List",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/player/list?gameId=2e0290b0-667c-11eb-a08f-d5a467189ff7",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"player",
+						"list"
+					],
+					"query": [
+						{
+							"key": "gameId",
+							"value": "2e0290b0-667c-11eb-a08f-d5a467189ff7"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Player Name Edit",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJncm91cElkIjoiMSIsImdhbWVJZCI6ImI5OGRkNDYwLTYxMmItMTFlYi1hZjM2LWM5MThiYjYwM2Q5MyIsImV4cCI6MTAwMDAwMDAwMDAwMDAsImlhdCI6MTYxMTgxMjU5OX0.eTGdsN4LKgqIDzmXpfKZ_f9zz5HGYsGQA6wugr4mllQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"newName\": \"Joe\",\r\n    \"gameId\": \"9c832c60-629a-11eb-9843-4dc558dd077f\",\r\n    \"playerd\": \"9c832c61-629a-11eb-9843-4dc558dd077\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/player/edit",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"player",
+						"edit"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Game Types",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/game/types",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"game",
+						"types"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Game Difficulties",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/game/difficulties",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"game",
+						"difficulties"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Player Select",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"gameId\": \"2e0290b0-667c-11eb-a08f-d5a467189ff7\",\r\n    \"playerId\": \"2e0290b1-667c-11eb-a08f-d5a467189ff7\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/player/select",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"player",
+						"select"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Player Submit",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJncm91cElkIjpudWxsLCJnYW1lSWQiOiIyZTAyOTBiMC02NjdjLTExZWItYTA4Zi1kNWE0NjcxODlmZjciLCJwbGF5ZXJJZCI6IjJlMDI5MGIxLTY2N2MtMTFlYi1hMDhmLWQ1YTQ2NzE4OWZmNyIsImV4cCI6MTAwMDAwMDAwMDAwMDAsImlhdCI6MTYxMjM5Njk3Mn0.QhLb1eYUhT9TMLYu4e1pOTymCIkIF4NXgDNOCzFFZx8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"itemId\": 5,\r\n    \"answer\": \"BB-8\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/player/submit",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"player",
+						"submit"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:3000/dev"
+		}
+	]
+}

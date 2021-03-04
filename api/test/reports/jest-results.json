@@ -1,0 +1,204 @@
+{
+  "numFailedTestSuites": 2,
+  "numFailedTests": 0,
+  "numPassedTestSuites": 2,
+  "numPassedTests": 4,
+  "numPendingTestSuites": 0,
+  "numPendingTests": 0,
+  "numRuntimeErrorTestSuites": 2,
+  "numTodoTests": 0,
+  "numTotalTestSuites": 4,
+  "numTotalTests": 4,
+  "openHandles": [],
+  "snapshot": {
+    "added": 0,
+    "didUpdate": false,
+    "failure": false,
+    "filesAdded": 0,
+    "filesRemoved": 0,
+    "filesRemovedList": [],
+    "filesUnmatched": 0,
+    "filesUpdated": 0,
+    "matched": 0,
+    "total": 0,
+    "unchecked": 0,
+    "uncheckedKeysByFile": [],
+    "unmatched": 0,
+    "updated": 0
+  },
+  "startTime": 1613518410993,
+  "success": false,
+  "testResults": [
+    {
+      "leaks": false,
+      "numFailingTests": 0,
+      "numPassingTests": 2,
+      "numPendingTests": 0,
+      "numTodoTests": 0,
+      "openHandles": [],
+      "perfStats": {
+        "end": 1613518413716,
+        "runtime": 1465,
+        "slow": false,
+        "start": 1613518412251
+      },
+      "skipped": false,
+      "snapshot": {
+        "added": 0,
+        "fileDeleted": false,
+        "matched": 0,
+        "unchecked": 0,
+        "unmatched": 0,
+        "updated": 0,
+        "uncheckedKeys": []
+      },
+      "testFilePath": "C:\\Projects\\FamilyQuiz\\serverless\\family-quiz-backend\\test\\a_localDataEndpoints.test.js",
+      "testResults": [
+        {
+          "ancestorTitles": [
+            "Local Data Endpoints"
+          ],
+          "duration": 303,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "Local Data Endpoints Get Available Game Types",
+          "location": null,
+          "numPassingAsserts": 0,
+          "status": "passed",
+          "title": "Get Available Game Types"
+        },
+        {
+          "ancestorTitles": [
+            "Local Data Endpoints"
+          ],
+          "duration": 107,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "Local Data Endpoints Get Available Game Difficulties",
+          "location": null,
+          "numPassingAsserts": 0,
+          "status": "passed",
+          "title": "Get Available Game Difficulties"
+        }
+      ],
+      "failureMessage": null
+    },
+    {
+      "leaks": false,
+      "numFailingTests": 0,
+      "numPassingTests": 2,
+      "numPendingTests": 0,
+      "numTodoTests": 0,
+      "openHandles": [],
+      "perfStats": {
+        "end": 1613518414994,
+        "runtime": 1176,
+        "slow": false,
+        "start": 1613518413818
+      },
+      "skipped": false,
+      "snapshot": {
+        "added": 0,
+        "fileDeleted": false,
+        "matched": 0,
+        "unchecked": 0,
+        "unmatched": 0,
+        "updated": 0,
+        "uncheckedKeys": []
+      },
+      "testFilePath": "C:\\Projects\\FamilyQuiz\\serverless\\family-quiz-backend\\test\\b_gameSetup.test.js",
+      "testResults": [
+        {
+          "ancestorTitles": [
+            "Game Setup"
+          ],
+          "duration": 124,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "Game Setup Create game failure, Invalid params",
+          "location": null,
+          "numPassingAsserts": 0,
+          "status": "passed",
+          "title": "Create game failure, Invalid params"
+        },
+        {
+          "ancestorTitles": [
+            "Game Setup"
+          ],
+          "duration": 538,
+          "failureDetails": [],
+          "failureMessages": [],
+          "fullName": "Game Setup Create new game",
+          "location": null,
+          "numPassingAsserts": 0,
+          "status": "passed",
+          "title": "Create new game"
+        }
+      ],
+      "failureMessage": null
+    },
+    {
+      "failureMessage": "  \u001b[1m● \u001b[22mTest suite failed to run\n\n    Your test suite must contain at least one test.\n\n      \u001b[2mat onResult (\u001b[22mnode_modules/@jest/core/build/TestScheduler.js\u001b[2m:175:18)\u001b[22m\n      \u001b[2mat \u001b[22mnode_modules/@jest/core/build/TestScheduler.js\u001b[2m:304:17\u001b[22m\n      \u001b[2mat \u001b[22mnode_modules/emittery/index.js\u001b[2m:260:13\u001b[22m\n          at Array.map (<anonymous>)\n      \u001b[2mat Emittery.Typed.emit (\u001b[22mnode_modules/emittery/index.js\u001b[2m:258:23)\u001b[22m\n",
+      "leaks": false,
+      "numFailingTests": 0,
+      "numPassingTests": 0,
+      "numPendingTests": 0,
+      "numTodoTests": 0,
+      "openHandles": [],
+      "perfStats": {
+        "end": 0,
+        "runtime": 0,
+        "slow": false,
+        "start": 0
+      },
+      "skipped": false,
+      "snapshot": {
+        "added": 0,
+        "fileDeleted": false,
+        "matched": 0,
+        "unchecked": 0,
+        "uncheckedKeys": [],
+        "unmatched": 0,
+        "updated": 0
+      },
+      "testExecError": {
+        "message": "Your test suite must contain at least one test.",
+        "stack": "Error: Your test suite must contain at least one test.\n    at onResult (C:\\Projects\\FamilyQuiz\\serverless\\family-quiz-backend\\node_modules\\@jest\\core\\build\\TestScheduler.js:175:18)\n    at C:\\Projects\\FamilyQuiz\\serverless\\family-quiz-backend\\node_modules\\@jest\\core\\build\\TestScheduler.js:304:17\n    at C:\\Projects\\FamilyQuiz\\serverless\\family-quiz-backend\\node_modules\\emittery\\index.js:260:13\n    at Array.map (<anonymous>)\n    at Emittery.Typed.emit (C:\\Projects\\FamilyQuiz\\serverless\\family-quiz-backend\\node_modules\\emittery\\index.js:258:23)"
+      },
+      "testFilePath": "C:\\Projects\\FamilyQuiz\\serverless\\family-quiz-backend\\test\\c_playerInteraction.test.js",
+      "testResults": []
+    },
+    {
+      "failureMessage": "  \u001b[1m● \u001b[22mTest suite failed to run\n\n    Your test suite must contain at least one test.\n\n      \u001b[2mat onResult (\u001b[22mnode_modules/@jest/core/build/TestScheduler.js\u001b[2m:175:18)\u001b[22m\n      \u001b[2mat \u001b[22mnode_modules/@jest/core/build/TestScheduler.js\u001b[2m:304:17\u001b[22m\n      \u001b[2mat \u001b[22mnode_modules/emittery/index.js\u001b[2m:260:13\u001b[22m\n          at Array.map (<anonymous>)\n      \u001b[2mat Emittery.Typed.emit (\u001b[22mnode_modules/emittery/index.js\u001b[2m:258:23)\u001b[22m\n",
+      "leaks": false,
+      "numFailingTests": 0,
+      "numPassingTests": 0,
+      "numPendingTests": 0,
+      "numTodoTests": 0,
+      "openHandles": [],
+      "perfStats": {
+        "end": 0,
+        "runtime": 0,
+        "slow": false,
+        "start": 0
+      },
+      "skipped": false,
+      "snapshot": {
+        "added": 0,
+        "fileDeleted": false,
+        "matched": 0,
+        "unchecked": 0,
+        "uncheckedKeys": [],
+        "unmatched": 0,
+        "updated": 0
+      },
+      "testExecError": {
+        "message": "Your test suite must contain at least one test.",
+        "stack": "Error: Your test suite must contain at least one test.\n    at onResult (C:\\Projects\\FamilyQuiz\\serverless\\family-quiz-backend\\node_modules\\@jest\\core\\build\\TestScheduler.js:175:18)\n    at C:\\Projects\\FamilyQuiz\\serverless\\family-quiz-backend\\node_modules\\@jest\\core\\build\\TestScheduler.js:304:17\n    at C:\\Projects\\FamilyQuiz\\serverless\\family-quiz-backend\\node_modules\\emittery\\index.js:260:13\n    at Array.map (<anonymous>)\n    at Emittery.Typed.emit (C:\\Projects\\FamilyQuiz\\serverless\\family-quiz-backend\\node_modules\\emittery\\index.js:258:23)"
+      },
+      "testFilePath": "C:\\Projects\\FamilyQuiz\\serverless\\family-quiz-backend\\test\\d_itemEndpoints.test.js",
+      "testResults": []
+    }
+  ],
+  "wasInterrupted": false
+}

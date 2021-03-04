@@ -1,0 +1,30 @@
+
+
+# The Question Data API service
+https://opentdb.com/api_config.php
+
+
+# Sls DynamoDB access patterns code 
+https://www.serverless.com/blog/node-rest-api-with-serverless-lambda-and-dynamodb
+
+
+# Alexa APP in NodeJS
+https://github.com/alexa-js/alexa-app
+
+# DynamoDB local
+https://www.npmjs.com/package/serverless-dynamodb-local
+
+
+# API testing Jest + Supertest
+https://www.rithmschool.com/courses/intermediate-node-express/api-tests-with-jest
+https://www.velotio.com/engineering-blog/scalable-api-testing-framework-with-jest-and-supertest
+
+# Testing with sls offline and setup scripts
+https://medium.com/@octoz/automate-your-serverless-api-integration-tests-locally-e2f41d3ec757
+
+
+# Start DynamoDB local Admin
+-- dynamodb-admin
+
+# Start offline + starts local DynamoDB 
+-- sls offline start
