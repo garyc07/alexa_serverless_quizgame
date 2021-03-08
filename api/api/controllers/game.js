@@ -83,7 +83,7 @@ module.exports.setup = async (req, res, next) => {
          gameId: gameId,
          playerId: generator.generateId(),
          playerName: player,
-         readyStatus: false,
+         lastItemId: 0,
          totalScore: 0,
          questions: []
       }
@@ -99,6 +99,7 @@ module.exports.setup = async (req, res, next) => {
    }
 
 
+   // Get the game items(questions) based on setup input
    const items = await remoteInterface.gameItemsBuilder(gameId, body.gameType, body.difficulty)
 
 
@@ -112,6 +113,11 @@ module.exports.setup = async (req, res, next) => {
 
    // Write questions items for this game
    for(const item of items){
+
+      // Set the initial message item as ready from the start
+      if(item.itemId == 1){
+         item.readyStatus = true
+      }
       await itemStore.writeItem(item)
    }
 

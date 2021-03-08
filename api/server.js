@@ -10,7 +10,9 @@ const corsOptions = {
    origin: [
       'https://localhost:3000',
       'https://outlook-static-dev.tdsdevapis.com',
-      'https://outlook.tdscloud.ie'
+      'https://outlook.tdscloud.ie',
+      'http://192.168.0.45:3000',
+      'http://quiz-app-public.s3-website.eu-west-1.amazonaws.com'
    ],
    exposedHeaders: ['Content-Type', 'Location', 'x-amzn-requestid'],
    optionsSuccessStatus: 200 

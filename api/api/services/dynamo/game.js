@@ -5,7 +5,7 @@ module.exports = {
    createNewGame: async (gameOpts) => {
 
       const params = {
-         TableName: 'familyquiz-game-table',
+         TableName: process.env.GameTable,
          Item: gameOpts
       }
    
@@ -14,7 +14,7 @@ module.exports = {
 
    getGame: async (groupId, gameId) => {
       const params = {
-         TableName: 'familyquiz-game-table',
+         TableName: process.env.GameTable,
          Key: {
             groupId: groupId,
             gameId: gameId
@@ -27,7 +27,7 @@ module.exports = {
 
    getGroupGames: async (groupId) => {
       const params = {
-         TableName: 'familyquiz-game-table',
+         TableName: process.env.GameTable,
          KeyConditionExpression: 'groupId = :groupId',
          ExpressionAttributeValues: { 
             ':groupId': groupId

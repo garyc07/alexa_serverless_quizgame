@@ -47,11 +47,8 @@ module.exports.select = async (req, res, next) => {
    utils.validateBodyParamProps(body, requiredParams)
 
    try{
-
-      await playerStore.setPlayerReadyStatus(body.gameId, body.playerId, true)
-
+      
       const token = utils.generateToken(null, body.gameId, body.playerId)
-
       res.json({token: token})
 
    } catch(err){
@@ -68,35 +65,63 @@ module.exports.select = async (req, res, next) => {
 module.exports.submit = async (req, res, next) => {
 
    const body = req.body
-   const requiredParams = ['itemId', 'answer']
-   utils.validateBodyParamProps(body, requiredParams)
+   utils.validateBodyParamProps(body, ['itemId'])
 
-   const playerItem = await playerStore.getPlayerItem(req.payload.gameId, req.payload.playerId)
+   // Get all players for this game. Required to check individual player statuses
+   const allPlayers = await playerStore.getAllForGame(req.payload.gameId)
+
+   // Get the player record of the players making the submission
+   const thisPlayer = allPlayers.find(p => p.playerId === req.payload.playerId)
+
    const questionItem = await itemStore.getItem(req.payload.gameId, parseInt(body.itemId))
 
+
+   // If the item submitted on is a message only item. Update the player lastItemId only
    if(questionItem.message){
-      playerItem.readyStatus = true
-      await playerStore.writePlayerItem(playerItem)
-      return res.json({good: 'Y'})
+
+      thisPlayer.lastItemId = questionItem.itemId
+      await playerStore.updateLastItemId(thisPlayer)
+
+   } else {
+
+      // If the item submitted on is a question check the answer and update accordingly
+
+      // Shape of object added to the thisPlayer.questions array 
+      let playerQuestion = {
+         question: questionItem.question,
+         playerAnswer: body.answer.toLowerCase(),
+         correctAnswer: questionItem.correctAnswer,
+         correct: false
+      }
+
+      // Check answer and update thisPlayer score accordingly
+      if(playerQuestion.playerAnswer === questionItem.correctAnswer.toLowerCase()){
+         thisPlayer.totalScore += questionItem.scoreValue
+         playerQuestion.correct = true
+      }
+
+      // Update the player.question array with the latest submission and answer
+      thisPlayer.questions.push(playerQuestion)
+
+      // Set the last submitted ItemId. Used to determine readiness to proceed
+      thisPlayer.lastItemId = questionItem.itemId
+
+      await playerStore.writePlayerItem(thisPlayer)
    }
 
-   let playerQuestion = {
-      question: questionItem.question,
-      playerAnswer: body.answer.toLowerCase(),
-      correctAnswer: questionItem.correctAnswer,
-      correct: false
+
+   // Update Game Item Status, based on player submissions
+   let updateItemStatus = true
+   for(const player of allPlayers){
+      if(player.lastItemId !== questionItem.itemId){
+         updateItemStatus = false
+      }
    }
 
-   if(playerQuestion.playerAnswer === questionItem.correctAnswer.toLowerCase()){
-      playerItem.totalScore += questionItem.scoreValue
-      playerQuestion.correct = true
+   if(updateItemStatus){
+      await itemStore.updateItemReadyStatus(req.payload.gameId, questionItem.itemId + 1, true)
    }
 
-   playerItem.readyStatus = true
-
-   playerItem.questions.push(playerQuestion)
-
-   await playerStore.writePlayerItem(playerItem)
 
    res.json({good: 'Y'}) // Return 'nextItem' url??
 

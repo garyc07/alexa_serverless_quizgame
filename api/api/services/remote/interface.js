@@ -17,6 +17,7 @@ module.exports.gameItemsBuilder = async (gameId, gameType, gameDifficulty) => {
       let testItems = require('./testData').items
       testItems.forEach(i => {
          i.gameId = gameId
+         i.readyStatus = false
       })
       return testItems
    }
@@ -30,6 +31,7 @@ module.exports.gameItemsBuilder = async (gameId, gameType, gameDifficulty) => {
       items.push({
          gameId: gameId,
          itemId: itemId,
+         readyStatus: false,
          message: 'Round Number ' + round.roundNumber // Add info on category and timer etc to this message
       })
 
@@ -44,6 +46,7 @@ module.exports.gameItemsBuilder = async (gameId, gameType, gameDifficulty) => {
          items.push({
             gameId: gameId,
             itemId: itemId,
+            readyStatus: false,
             questionType: question.type,
             question: question.question,
             correctAnswer: question.correct_answer,

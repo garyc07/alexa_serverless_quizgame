@@ -31,6 +31,19 @@ const Templates = {
    },
 
 
+   firstItem: (res) => {
+      localStorage.setItem('lastItemId', '1')
+      var div = `
+         <div id="itemDiv">
+            <p>${res.item.message}</p>
+            <button class="btn btn-primary playersubmitbtn">Ready</button>
+         </div>
+      `
+
+      swapTemplate(div)
+   },
+
+
    nextItem: (res) => {
       if(res.not_ready){
          // Render waiting page

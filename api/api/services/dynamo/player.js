@@ -6,7 +6,7 @@ module.exports = {
    writePlayerItem: async (item) => {
 
       const params = {
-         TableName: 'familyquiz-player-table',
+         TableName: process.env.PlayerTable,
          Item: item
       }
    
@@ -16,7 +16,7 @@ module.exports = {
 
    getPlayerItem: async (gameId, playerId) => {
       const params = {
-         TableName: 'familyquiz-player-table',
+         TableName: process.env.PlayerTable,
          Key: {
             gameId: gameId,
             playerId: playerId
@@ -32,7 +32,7 @@ module.exports = {
    getAllForGame: async (gameId) => {
 
       const params = {
-         TableName: 'familyquiz-player-table',
+         TableName: process.env.PlayerTable,
          KeyConditionExpression: 'gameId = :gameId',
          ExpressionAttributeValues: { 
             ':gameId': gameId
@@ -48,7 +48,7 @@ module.exports = {
 
       //let ret = {}
       const params = {
-         TableName: 'familyquiz-player-table',
+         TableName: process.env.PlayerTable,
          Key: {
             gameId: gameId,
             playerId: playerId,
@@ -62,42 +62,23 @@ module.exports = {
       }
 
       return dynamoDocClient.update(params).promise()
-
-/*       await dynamoDocClient.update(params, (err, res) => {
-         ret.err = err
-         console.log(err.code)
-      }) */
-
-/*       await dynamoDocClient.update(params).promise().catch(err => {
-         ret.err = err
-      }) */
-
-/*       try{
-         const res = await dynamoDocClient.update(params).promise()
-         return new DynamoResult(null, res)
-      } catch(err){
-         return new DynamoResult(err.code, null)
-      } */
-
-      //return ret
    },
 
-
-   setPlayerReadyStatus: async (gameId, playerId, readyStatus) => {
+   updateLastItemId: async (player) => {
       const params = {
-         TableName: 'familyquiz-player-table',
+         TableName: process.env.PlayerTable,
          Key: {
-            gameId: gameId,
-            playerId: playerId,
+            gameId: player.gameId,
+            playerId: player.playerId
          },
-         UpdateExpression: 'set readyStatus = :n',
+         UpdateExpression: 'set lastItemId = :n',
          ConditionExpression: 'attribute_exists(gameId) AND attribute_exists(playerId)',
          ExpressionAttributeValues: {
-            ':n': readyStatus
+            ':n': player.lastItemId
          },
          ReturnConsumedCapacity: 'NONE'
       }
 
-      return dynamoDocClient.update(params).promise()
+      return dynamoDocClient.update(params).promise()  
    }
 }
